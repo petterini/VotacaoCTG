@@ -14,12 +14,12 @@ public class Participante {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "É necessário cadastrar o nome do participante.")
     private String nome;
 
-    @NotBlank
+    @NotBlank(message = "É necessário selecionar se é Peão ou Prenda.")
     private String tipo;
 
-    @NotBlank
+    @NotBlank(message = "É necessário selecionar a categoria.")
     private String categoria;
 }

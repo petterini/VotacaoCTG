@@ -12,8 +12,16 @@ public class ParticipanteValidator {
     private final ParticipanteRepository participanteRepository;
 
     public void validate(Participante participante) {
-        if(participanteRepository.existsByNome(participante.getNome())) {
+        if(participanteRepository.existsByNome(participante.getNome()) && participante.getId() == null) {
             throw new DuplicateParticipantException("Participante já cadastrado.");
         }
+
+        if(participante.getId() != null) {
+            Participante p1 = participanteRepository.getByNome(participante.getNome());
+            if(!participante.getId().equals(p1.getId())) {
+                throw new DuplicateParticipantException("Participante já cadastrado.");
+            }
+        }
     }
+
 }
