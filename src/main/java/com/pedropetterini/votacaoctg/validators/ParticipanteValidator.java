@@ -12,13 +12,13 @@ public class ParticipanteValidator {
     private final ParticipanteRepository participanteRepository;
 
     public void validate(Participante participante) {
-        if(participanteRepository.existsByNome(participante.getNome()) && participante.getId() == null) {
+        if (participanteRepository.existsByNome(participante.getNome()) && participante.getId() == null) {
             throw new DuplicateParticipantException("Participante já cadastrado.");
         }
 
-        if(participante.getId() != null) {
-            Participante p1 = participanteRepository.getByNome(participante.getNome());
-            if(!participante.getId().equals(p1.getId())) {
+        if (participante.getId() != null && participanteRepository.existsByNome(participante.getNome())) {
+            Participante p1 = participanteRepository.findByNome(participante.getNome()).get();
+            if(p1.getId() != participante.getId()){
                 throw new DuplicateParticipantException("Participante já cadastrado.");
             }
         }
