@@ -9,9 +9,11 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("votacaoCTG/participantes")
@@ -20,6 +22,7 @@ public class ParticipanteController {
     private final ParticipanteService service;
 
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Object> createParticipant(@Valid @RequestBody Participante participante) {
         try {
             var newParticipant = this.service.addParticipante(participante);
@@ -83,7 +86,8 @@ public class ParticipanteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> updateParticipant(@PathVariable Long id, @Valid @RequestBody Participante participante) {
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Object> updateParticipant(@PathVariable UUID id, @Valid @RequestBody Participante participante) {
         try {
             var part = this.service.updateParticipante(id, participante);
             return ResponseEntity.ok(part);
@@ -97,7 +101,8 @@ public class ParticipanteController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteParticipant(@PathVariable Long id) {
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Object> deleteParticipant(@PathVariable UUID id) {
         try {
             this.service.deleteParticipante(id);
             return ResponseEntity.noContent().build();

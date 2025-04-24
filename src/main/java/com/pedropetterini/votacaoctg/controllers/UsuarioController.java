@@ -9,7 +9,10 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,6 +22,7 @@ public class UsuarioController {
     private final UsuarioService usuarioService;
 
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Object> addUser(@Valid @RequestBody Usuario usuario) {
         try {
             var newUser = this.usuarioService.addUsuario(usuario);
@@ -33,13 +37,15 @@ public class UsuarioController {
     }
 
     @GetMapping("/get-all")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Object> getAllUsers() {
         var newUser = this.usuarioService.getAll();
         return ResponseEntity.status(HttpStatus.OK).body(newUser);
     }
 
     @GetMapping("/get-by-id/{id}")
-    public ResponseEntity<Object> getUserById(@PathVariable Long id) {
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Object> getUserById(@PathVariable UUID id) {
         try {
             var newUser = this.usuarioService.getById(id);
             return ResponseEntity.status(HttpStatus.OK).body(newUser);
@@ -50,6 +56,7 @@ public class UsuarioController {
     }
 
     @PutMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Object> updateUser(@Valid @RequestBody Usuario usuario) {
         try {
             var newUser = this.usuarioService.updateUsuario(usuario);
@@ -61,7 +68,8 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteUser(@PathVariable Long id) {
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Object> deleteUser(@PathVariable UUID id) {
         try {
             this.usuarioService.deleteUsuario(id);
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();

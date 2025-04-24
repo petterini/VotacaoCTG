@@ -5,6 +5,7 @@ body {
     align-items: center;
     justify-content: center;
     margin: 0;
+    padding: 0 1rem;
   }
   
   .login-card {
@@ -38,5 +39,9 @@ body {
     justify-content: center;
     align-items: center;
     padding: 2rem;
+  }
+
+  *{
+    box-sizing: border-box;
   }
   

@@ -7,9 +7,10 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
-public interface ParticipanteRepository extends JpaRepository<Participante, Long> {
+public interface ParticipanteRepository extends JpaRepository<Participante, UUID> {
     boolean existsByNome(@NotBlank String nome);
 
     Optional<Participante> findByNome(@NotBlank(message = "Nenhum participante encontrado.") String nome);

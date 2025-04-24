@@ -6,9 +6,11 @@ import com.pedropetterini.votacaoctg.repositories.UsuarioRepository;
 import com.pedropetterini.votacaoctg.validators.UsuarioValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -16,18 +18,24 @@ public class UsuarioService {
     
     private final UsuarioRepository usuarioRepository;
     private final UsuarioValidator usuarioValidator;
+    private final PasswordEncoder passwordEncoder;
 
 
     public Usuario addUsuario(Usuario usuario) {
         usuarioValidator.validate(usuario);
+        usuario.setSenha(passwordEncoder.encode(usuario.getCpf()));
         return usuarioRepository.save(usuario);
+    }
+
+    public Usuario getByMesa(Long mesa) {
+        return usuarioRepository.findByMesa(mesa);
     }
 
     public List<Usuario> getAll() {
         return usuarioRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
-    public Usuario getById(Long id) {
+    public Object getById(UUID id) {
         return usuarioRepository.findById(id).orElseThrow(
                 () -> new UserNotFoundException("Usuário não encontrado.")
         );
@@ -41,7 +49,7 @@ public class UsuarioService {
         }
     }
 
-    public void deleteUsuario(Long id) {
+    public void deleteUsuario(UUID id) {
         if(usuarioRepository.existsById(id)) {
             usuarioRepository.deleteById(id);
         }else{

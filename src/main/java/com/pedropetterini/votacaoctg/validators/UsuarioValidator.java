@@ -13,7 +13,7 @@ public class UsuarioValidator {
     private final UsuarioRepository usuarioRepository;
 
     public void validate(Usuario usuario) {
-        if(usuarioRepository.findById(usuario.getId()).isPresent()) {
+        if(usuarioRepository.existsByMesa(usuario.getMesa())) {
             throw new DuplicateUserException("Usuário já cadastrado.");
         }
 

@@ -9,6 +9,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -45,7 +46,7 @@ public class ParticipanteService {
                 () -> new ParticipantNotFoundException("Nenhuma participante encontrado."));
     }
 
-    public Participante updateParticipante(Long id, Participante participante) {
+    public Participante updateParticipante(UUID id, Participante participante) {
         if(repository.existsById(id)) {
             participante.setId(id);
             participanteValidator.validate(participante);
@@ -55,7 +56,7 @@ public class ParticipanteService {
         }
     }
 
-    public void deleteParticipante(Long id) {
+    public void deleteParticipante(UUID id) {
         if(repository.existsById(id)) {
             repository.deleteById(id);
         }else{
