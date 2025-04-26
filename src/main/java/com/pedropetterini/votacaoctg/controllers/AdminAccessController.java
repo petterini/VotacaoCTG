@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 @RequiredArgsConstructor
 @PreAuthorize("hasRole('ADMIN')")
@@ -34,14 +36,16 @@ public class AdminAccessController {
         return "cadastrarUsuario";
     }
 
-    @PostMapping("/cadastrar-usuario")
-    public String cadastrarUsuario(Usuario usuario, Model model) {
-        try {
-            usuarioService.addUsuario(usuario);
-            model.addAttribute("mensagem", "Usuario cadastrado com sucesso!");
-        }catch (Exception e) {
-            model.addAttribute("mensagem", "Usuário já cadastrado!");
-        }
-        return "cadastrarUsuario";
+    @GetMapping("/editar-usuario")
+    public String editarUsuario() {
+        return "editarUsuario";
     }
+
+    @GetMapping("/editar-participante")
+    public String mostrarEditarParticipante(Model model) {
+        List<Participante> participantes = participanteService.getAllParticipants();
+        model.addAttribute("participantes", participantes);
+        return "editarParticipante";
+    }
+
 }

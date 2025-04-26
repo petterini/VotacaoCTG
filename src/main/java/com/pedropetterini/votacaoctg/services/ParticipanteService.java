@@ -18,7 +18,7 @@ public class ParticipanteService {
     private final ParticipanteValidator participanteValidator;
 
     public Participante addParticipante(Participante participante) {
-        participanteValidator.validate(participante);
+        participanteValidator.validate(null, participante);
         return repository.save(participante);
     }
 
@@ -39,7 +39,7 @@ public class ParticipanteService {
     public Participante updateParticipante(UUID id, Participante participante) {
         if(repository.existsById(id)) {
             participante.setId(id);
-            participanteValidator.validate(participante);
+            participanteValidator.validate(id, participante);
             return repository.save(participante);
         }else{
             throw new ParticipantNotFoundException("Participante não encontrado.");

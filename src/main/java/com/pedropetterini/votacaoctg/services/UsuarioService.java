@@ -32,7 +32,7 @@ public class UsuarioService {
     }
 
     public List<Usuario> getAll() {
-        return usuarioRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
+        return usuarioRepository.findAll(Sort.by(Sort.Direction.ASC, "Nome"));
     }
 
     public Object getById(UUID id) {

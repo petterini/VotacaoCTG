@@ -61,20 +61,20 @@ public class ParticipanteController {
         }
     }
 
-    @PutMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Object> updateParticipant(@PathVariable UUID id, @Valid @RequestBody Participante participante) {
-        try {
-            var part = this.service.updateParticipante(id, participante);
-            return ResponseEntity.ok(part);
-        }catch (ParticipantNotFoundException e) {
-            var errorMessage = ErrorResponse.userNotFoundResponse(e.getMessage());
-            return ResponseEntity.status(errorMessage.status()).body(errorMessage);
-        }catch (DuplicateParticipantException e) {
-            var errorMessage = ErrorResponse.conflictResponse(e.getMessage());
-            return ResponseEntity.status(errorMessage.status()).body(errorMessage);
-        }
-    }
+//    @PutMapping("/{id}")
+//    @PreAuthorize("hasRole('ADMIN')")
+//    public ResponseEntity<Object> updateParticipant(@PathVariable UUID id, @Valid @RequestBody Participante participante) {
+//        try {
+//            var part = this.service.updateParticipante(id, participante);
+//            return ResponseEntity.ok(part);
+//        }catch (ParticipantNotFoundException e) {
+//            var errorMessage = ErrorResponse.userNotFoundResponse(e.getMessage());
+//            return ResponseEntity.status(errorMessage.status()).body(errorMessage);
+//        }catch (DuplicateParticipantException e) {
+//            var errorMessage = ErrorResponse.conflictResponse(e.getMessage());
+//            return ResponseEntity.status(errorMessage.status()).body(errorMessage);
+//        }
+//    }
 
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")

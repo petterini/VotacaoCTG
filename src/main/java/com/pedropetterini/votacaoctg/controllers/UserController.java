@@ -23,4 +23,16 @@ public class UserController {
         }
         return "cadastrarUsuario";
     }
+
+    @PostMapping("/editarUsuario")
+    public String editarUsuario(Usuario usuario, Model model) {
+        try {
+            usuarioService.updateUsuario(usuario);
+            model.addAttribute("mensagem", "Usuario editado com sucesso!");
+        }catch (Exception e) {
+            model.addAttribute("mensagem", "Erro ao editar usuario");
+        }
+        return "editarUsuario";
+    }
+
 }
