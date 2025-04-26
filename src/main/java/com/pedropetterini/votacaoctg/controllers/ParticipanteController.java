@@ -50,36 +50,12 @@ public class ParticipanteController {
         }
     }
 
-    @GetMapping("/get-by-tipo/{tipo}")
-    public ResponseEntity<Object> getParticipantByTipo(@PathVariable String tipo) {
-        try {
-            var participantes = this.service.getParticipantsByTipo(tipo);
-            return ResponseEntity.ok(participantes);
-        }catch (ParticipantNotFoundException e) {
-            var errorMessage = ErrorResponse.userNotFoundResponse(e.getMessage());
-            return ResponseEntity.status(errorMessage.status()).body(errorMessage);
-        }
-    }
-
     @GetMapping("/get-by-categoria/{categoria}")
     public ResponseEntity<Object> getParticipantByCategoria(@PathVariable String categoria) {
         try {
             var participantes = this.service.getParticipantsByCategoria(categoria);
             return ResponseEntity.ok(participantes);
         }catch (ParticipantNotFoundException e) {
-            var errorMessage = ErrorResponse.userNotFoundResponse(e.getMessage());
-            return ResponseEntity.status(errorMessage.status()).body(errorMessage);
-        }
-    }
-
-    @GetMapping("/get-by-categoria-tipo/{categoria}/{tipo}")
-    public ResponseEntity<Object> getParticipantByCategoriaAndTipo(
-            @PathVariable String categoria,
-            @PathVariable String tipo) {
-        try {
-            var participantes = this.service.getParticipantsByCategoriaAndTipo(categoria, tipo);
-            return ResponseEntity.ok(participantes);
-        } catch (ParticipantNotFoundException e) {
             var errorMessage = ErrorResponse.userNotFoundResponse(e.getMessage());
             return ResponseEntity.status(errorMessage.status()).body(errorMessage);
         }

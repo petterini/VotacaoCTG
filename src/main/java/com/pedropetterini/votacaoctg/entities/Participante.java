@@ -19,9 +19,6 @@ public class Participante {
     @NotBlank(message = "É necessário cadastrar o nome do participante.")
     private String nome;
 
-    @NotBlank(message = "É necessário selecionar se é Peão ou Prenda.")
-    private String tipo;
-
     @NotBlank(message = "É necessário selecionar a categoria.")
     private String categoria;
 }

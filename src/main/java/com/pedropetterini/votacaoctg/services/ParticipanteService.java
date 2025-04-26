@@ -31,18 +31,8 @@ public class ParticipanteService {
                 () -> new ParticipantNotFoundException("Participante não cadastrado."));
     }
 
-    public List<Participante> getParticipantsByTipo(String tipo) {
-        return repository.findByTipo(tipo).orElseThrow(
-                () -> new ParticipantNotFoundException("Nenhuma participante encontrado."));
-    }
-
     public List<Participante> getParticipantsByCategoria(String categoria) {
         return repository.findByCategoria(categoria).orElseThrow(
-                () -> new ParticipantNotFoundException("Nenhuma participante encontrado."));
-    }
-
-    public List<Participante> getParticipantsByCategoriaAndTipo(String tipo, String categoria) {
-        return repository.findByCategoriaAndTipo(categoria, tipo).orElseThrow(
                 () -> new ParticipantNotFoundException("Nenhuma participante encontrado."));
     }
 

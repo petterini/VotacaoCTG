@@ -15,11 +15,7 @@ public interface ParticipanteRepository extends JpaRepository<Participante, UUID
 
     Optional<Participante> findByNome(@NotBlank(message = "Nenhum participante encontrado.") String nome);
 
-    Optional<List<Participante>> findByTipo(@NotBlank(message = "Nenhum participante encontrado.") String tipo);
-
     Optional<List<Participante>> findByCategoria(@NotBlank(message = "Nenhum participante encontrado.") String categoria);
-
-    Optional<List<Participante>> findByCategoriaAndTipo(@NotBlank(message = "Nenhum participante encontrado.") String categoria, String tipo);
 
     Participante getByNome(@NotBlank(message = "É necessário cadastrar o nome do participante.") String nome);
 }
