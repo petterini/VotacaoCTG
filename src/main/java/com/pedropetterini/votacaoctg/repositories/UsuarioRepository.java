@@ -14,4 +14,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, UUID> {
     Usuario findByMesa(@NotNull Long mesa);
 
     boolean existsByMesa(@NotNull Long mesa);
+
+    void deleteByMesa(Long numMesa);
 }

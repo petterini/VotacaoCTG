@@ -5,7 +5,11 @@ import com.pedropetterini.votacaoctg.services.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -33,6 +37,18 @@ public class UserController {
             model.addAttribute("mensagem", "Erro ao editar usuario");
         }
         return "editarUsuario";
+    }
+
+    @PostMapping("/excluirUsuario")
+    public String excluirUsuario(@RequestParam Long numMesa, Model model) {
+        try {
+            usuarioService.deleteUsuario(numMesa);
+            model.addAttribute("mensagem", "Usuario excluido com sucesso!");
+        } catch (Exception e) {
+            e.printStackTrace();
+            model.addAttribute("mensagem", "Erro ao excluir usuario");
+        }
+        return "excluirUsuario";
     }
 
 }

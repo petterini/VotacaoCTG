@@ -48,4 +48,27 @@ public class AdminAccessController {
         return "editarParticipante";
     }
 
+    @GetMapping("/listar-usuarios")
+    public String listarUsuarios(Model model) {
+        List<Usuario> usuarios = usuarioService.getAll();
+
+        model.addAttribute("usuarios", usuarios);
+
+        return "listarUsuarios";
+    }
+
+    @GetMapping("/excluir-usuario")
+    public String excluirUsuario() {
+        return "excluirUsuario";
+    }
+
+    @GetMapping("/excluir-participante")
+    public String excluirParticipante(Model model) {
+        List<Participante> participantes = participanteService.getAllParticipants();
+
+        model.addAttribute("participantes", participantes);
+
+        return "excluirParticipante";
+    }
+
 }

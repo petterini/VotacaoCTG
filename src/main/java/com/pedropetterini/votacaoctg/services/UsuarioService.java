@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -32,7 +33,7 @@ public class UsuarioService {
     }
 
     public List<Usuario> getAll() {
-        return usuarioRepository.findAll(Sort.by(Sort.Direction.ASC, "Nome"));
+        return usuarioRepository.findAll(Sort.by(Sort.Direction.ASC, "mesa"));
     }
 
     public Object getById(UUID id) {
@@ -54,6 +55,15 @@ public class UsuarioService {
             usuarioRepository.deleteById(id);
         }else{
             throw new UserNotFoundException("Usuário não encontrado.");
+        }
+    }
+
+    @Transactional
+    public void deleteUsuario(Long numMesa) {
+        if(usuarioRepository.existsByMesa(numMesa)) {
+            usuarioRepository.deleteByMesa(numMesa);
+        }else {
+            throw new UserNotFoundException("Mesa não cadastrada.");
         }
     }
 }
