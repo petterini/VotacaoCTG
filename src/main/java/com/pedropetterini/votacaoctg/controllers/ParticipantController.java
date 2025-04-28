@@ -5,6 +5,10 @@ import com.pedropetterini.votacaoctg.entities.Usuario;
 import com.pedropetterini.votacaoctg.services.ParticipanteService;
 import com.pedropetterini.votacaoctg.services.UsuarioService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +24,7 @@ public class ParticipantController {
 
     private final ParticipanteService participanteService;
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/cadastrarParticipante")
     public String cadastrarParticipante(Participante participante, Model model) {
         try {
@@ -42,17 +47,27 @@ public class ParticipantController {
         Map<String, List<Participante>> participantesMap = participantes.stream().collect(Collectors.groupingBy(Participante::getCategoria));
 
         Map<String, List<Participante>> participantesOrd = new LinkedHashMap<>();
-        for(String categoria : ordemCategorias) {
-            if(participantesMap.containsKey(categoria)) {
+        for (String categoria : ordemCategorias) {
+            if (participantesMap.containsKey(categoria)) {
                 participantesOrd.put(categoria, participantesMap.get(categoria));
             }
         }
 
         model.addAttribute("participantes", participantesOrd);
 
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        String role = auth.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .findFirst()
+                .orElse("USER")
+                .replace("ROLE_", "");
+        model.addAttribute("role", role);
+
         return "listarParticipantes";
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("/editarParticipante")
     public String editarParticipante(@RequestParam UUID id, Participante participante, Model model) {
         try {
@@ -69,6 +84,7 @@ public class ParticipantController {
         return "editarParticipante";
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("excluirParticipante")
     public String excluirParticipante(@RequestParam UUID id, Model model) {
 

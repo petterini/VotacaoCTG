@@ -16,4 +16,6 @@ public interface UsuarioRepository extends JpaRepository<Usuario, UUID> {
     boolean existsByMesa(@NotNull Long mesa);
 
     void deleteByMesa(Long numMesa);
+
+    Object getByMesa(@NotNull Long mesa);
 }

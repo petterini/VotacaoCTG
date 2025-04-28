@@ -22,7 +22,7 @@ public class UsuarioController {
     private final UsuarioService usuarioService;
 
     @PostMapping
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Object> addUser(@Valid @RequestBody Usuario usuario) {
         try {
             var newUser = this.usuarioService.addUsuario(usuario);
@@ -37,14 +37,14 @@ public class UsuarioController {
     }
 
     @GetMapping("/get-all")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Object> getAllUsers() {
         var newUser = this.usuarioService.getAll();
         return ResponseEntity.status(HttpStatus.OK).body(newUser);
     }
 
     @GetMapping("/get-by-id/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Object> getUserById(@PathVariable UUID id) {
         try {
             var newUser = this.usuarioService.getById(id);
@@ -56,7 +56,7 @@ public class UsuarioController {
     }
 
     @PutMapping
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Object> updateUser(@Valid @RequestBody Usuario usuario) {
         try {
             var newUser = this.usuarioService.updateUsuario(usuario);
@@ -68,7 +68,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ResponseEntity<Object> deleteUser(@PathVariable UUID id) {
         try {
             this.usuarioService.deleteUsuario(id);

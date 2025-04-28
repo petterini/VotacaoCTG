@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Meus Votos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light p-5 d-flex justify-content-center">
+<div class="container" style="max-width: 700px;">
+    <h1 class="text-center mb-4">Meus Votos</h1>
+
+    <!-- Itera sobre o Map<String, Map<Participante,Long>> -->
+    <div th:each="entry : ${votosAgrupados}">
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <!-- entry.key = nome da categoria -->
+                <h4 class="mb-0" th:text="${entry.key}">Categoria</h4>
+            </div>
+            <ul class="list-group list-group-flush">
+                <!-- Agora itera sobre o Map<Participante,Long> que é entry.value -->
+                <li class="list-group-item d-flex justify-content-between"
+                    th:each="voteCountEntry : ${entry.value}">
+                    <!-- voteCountEntry.key = Participante -->
+                    <span th:text="${voteCountEntry.key.nome}">Nome do Participante</span>
+                    <!-- voteCountEntry.value = número de votos -->
+                    <span>
+              <span th:text="${voteCountEntry.value}">0</span> voto(s)
+            </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <a th:href="@{/user-dashboard}" class="btn btn-outline-secondary">Voltar</a>
+    </div>
+</div>
+</body>
+</html>

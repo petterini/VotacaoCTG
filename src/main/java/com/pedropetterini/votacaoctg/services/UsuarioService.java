@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -43,8 +44,11 @@ public class UsuarioService {
     }
 
     public Usuario updateUsuario(Usuario usuario) {
-        if(usuarioRepository.existsById(usuario.getId())) {
-            return usuarioRepository.save(usuario);
+        if(usuarioRepository.existsByMesa(usuario.getMesa())) {
+            var newUser = usuarioRepository.findByMesa(usuario.getMesa());
+            newUser.setCpf(usuario.getCpf());
+
+            return usuarioRepository.save(newUser);
         }else{
             throw new UserNotFoundException("Usuário não encontrado.");
         }

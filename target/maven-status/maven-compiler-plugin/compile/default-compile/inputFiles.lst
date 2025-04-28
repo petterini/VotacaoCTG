@@ -1,31 +1,31 @@
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\config\CustomAuthenticationSuccessHandler.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\config\SecurityConfiguration.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\config\WebConfiguration.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\controllers\AdminAccessController.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\controllers\InicialController.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\controllers\LoginViewController.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\controllers\ParticipantController.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\controllers\ParticipanteController.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\controllers\UserAccessController.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\controllers\UserController.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\controllers\UsuarioController.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\entities\Participante.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\entities\Usuario.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\entities\Voto.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\enums\Categoria.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\exceptions\DuplicateParticipantException.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\exceptions\DuplicateUserException.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\exceptions\ErrorField.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\exceptions\ErrorResponse.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\exceptions\GlobalExceptionHandler.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\exceptions\InvalidCpfException.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\exceptions\ParticipantNotFoundException.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\exceptions\UserNotFoundException.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\repositories\ParticipanteRepository.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\repositories\UsuarioRepository.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\services\CustomUserDetailsService.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\services\ParticipanteService.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\services\UsuarioService.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\validators\ParticipanteValidator.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\validators\UsuarioValidator.java
-C:\Users\ppett\Desktop\VotacaoCTG\src\main\java\com\pedropetterini\votacaoctg\VotacaoCtgApplication.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/VotacaoCtgApplication.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/config/CustomAuthenticationSuccessHandler.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/config/SecurityConfiguration.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/config/WebConfiguration.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/controllers/AdminAccessController.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/controllers/InicialController.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/controllers/LoginViewController.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/controllers/ParticipantController.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/controllers/ParticipanteController.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/controllers/UserAccessController.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/controllers/UserController.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/controllers/UsuarioController.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/entities/Participante.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/entities/Usuario.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/entities/Voto.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/enums/Categoria.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/exceptions/DuplicateParticipantException.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/exceptions/DuplicateUserException.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/exceptions/ErrorField.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/exceptions/ErrorResponse.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/exceptions/GlobalExceptionHandler.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/exceptions/InvalidCpfException.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/exceptions/ParticipantNotFoundException.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/exceptions/UserNotFoundException.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/repositories/ParticipanteRepository.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/repositories/UsuarioRepository.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/services/CustomUserDetailsService.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/services/ParticipanteService.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/services/UsuarioService.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/validators/ParticipanteValidator.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/validators/UsuarioValidator.java

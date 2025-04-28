@@ -3,6 +3,7 @@ package com.pedropetterini.votacaoctg.controllers;
 import com.pedropetterini.votacaoctg.entities.Usuario;
 import com.pedropetterini.votacaoctg.services.UsuarioService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 public class UserController {
 
     private final UsuarioService usuarioService;
@@ -34,6 +36,7 @@ public class UserController {
             usuarioService.updateUsuario(usuario);
             model.addAttribute("mensagem", "Usuario editado com sucesso!");
         }catch (Exception e) {
+            e.printStackTrace();
             model.addAttribute("mensagem", "Erro ao editar usuario");
         }
         return "editarUsuario";
