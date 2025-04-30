@@ -17,18 +17,19 @@
 
         <div class="d-grid gap-3">
           <h3>Mesas</h3>
-          <a th:href="@{/cadastrar-usuario}" class="btn btn-primary">Cadastrar Mesa</a>
-          <a th:href="@{/editar-usuario}" class="btn btn-warning">Editar Mesa</a>
-          <a th:href="@{/excluir-usuario}" class="btn btn-danger">Excluir Mesa</a>
-          <a th:href="@{/listar-usuarios}" class="btn btn-success">Listar Mesas</a><br>
+          <a th:href="@{/cadastrar-usuario}" class="btn btn-outline-primary">Cadastrar Mesa</a>
+          <a th:href="@{/editar-usuario}" class="btn btn-outline-primary">Editar Mesa</a>
+          <a th:href="@{/excluir-usuario}" class="btn btn-outline-primary">Excluir Mesa</a>
+          <a th:href="@{/listar-usuarios}" class="btn btn-outline-primary">Listar Mesas</a><br>
           <h3>Participantes</h3>
-          <a th:href="@{/cadastrar-participante}" class="btn btn-primary">Cadastrar Participante</a>
-          <a th:href="@{/editar-participante}" class="btn btn-warning">Editar Participantes</a>
-          <a th:href="@{/excluir-participante}" class="btn btn-danger">Excluir Participante</a>
-          <a th:href="@{/listar-participantes}" class="btn btn-success">Listar Participantes</a><br>
-          <a th:href="@{/verificar-votos}" class="btn btn-info">Verificar Votos</a>
+          <a th:href="@{/cadastrar-participante}" class="btn btn-outline-primary">Cadastrar Participante</a>
+          <a th:href="@{/editar-participante}" class="btn btn-outline-primary">Editar Participantes</a>
+          <a th:href="@{/excluir-participante}" class="btn btn-outline-primary">Excluir Participante</a>
+          <a th:href="@{/listar-participantes}" class="btn btn-outline-primary">Listar Participantes</a><br>
+          <a th:href="@{/verificar-votos}" class="btn btn-outline-success">Verificar Votos</a>
+
           <form th:action="@{/logout}" method="post">
-            <button type="submit" class="btn btn-outline-danger w-100">Sair</button>
+            <button type="submit" class="btn btn-danger w-100">Sair</button>
           </form>
         </div>
 

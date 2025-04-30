@@ -12,7 +12,8 @@
 <div class="container" style="max-width: 700px;">
   <h1 class="text-center mb-5">Votação de Participantes</h1>
 
-  <form th:action="@{/votar}" method="post">
+  <form th:action="@{/votar}" method="post"
+        onsubmit="return confirm('Tem certeza que deseja confirmar o voto? Esta ação não poderá ser desfeita.');">
 
     <div th:each="categoria : ${participantes.keySet()}">
       <div class="card mb-4 shadow-sm">

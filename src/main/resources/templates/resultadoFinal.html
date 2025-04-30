@@ -27,7 +27,12 @@
   </div>
 
   <div class="text-center">
-    <a th:href="@{/admin-dashboard}" class="btn btn-outline-secondary">Voltar</a>
+    <a th:href="@{/admin-dashboard}" class="btn btn-outline-secondary">Voltar</a><br><br>
+
+    <form th:action="@{/excluir-todos-votos}" method="post"
+          onsubmit="return confirm('Tem certeza que deseja excluir TODOS os votos? Esta ação não poderá ser desfeita.');">
+      <button type="submit" class="btn btn-danger">Excluir Todos os Votos</button>
+    </form>
   </div>
 </div>
 </body>

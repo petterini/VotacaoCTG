@@ -8,6 +8,8 @@ import com.pedropetterini.votacaoctg.services.ParticipanteService;
 import com.pedropetterini.votacaoctg.services.UsuarioService;
 import com.pedropetterini.votacaoctg.services.VotoService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,7 @@ import java.security.Principal;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Controller
@@ -27,7 +30,14 @@ public class UserAccessController {
     private final VotoService votoService;
 
     @GetMapping("/user-dashboard")
-    public String userDashboard() {
+    public String userDashboard(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Long mesa = Long.parseLong(authentication.getName());
+
+        boolean jaVotou = !votoService.podeVotar(mesa);
+
+        model.addAttribute("jaVotou", jaVotou);
+
         return "user-dashboard";
     }
 
@@ -36,7 +46,7 @@ public class UserAccessController {
         List<Participante> participantes = participanteService.getAllParticipants();
 
         List<String> ordemCategorias = List.of(
-                "Peão", "Guri", "Piá", "Piazito", "Adulta", "Juvenil", "Mirim", "Dente de Leite", "Chinoquinha"
+                "Peão", "Guri", "Piá", "Piazito", "Adulta", "Juvenil", "Mirim", "Pré-Mirim", "Dente de Leite", "Chinoquinha"
         );
 
         Map<String, List<Participante>> participantesMap = participantes.stream().collect(Collectors.groupingBy(Participante::getCategoria));
@@ -56,10 +66,14 @@ public class UserAccessController {
     @GetMapping("/acompanhar")
     public String meusVotos(Model model, Principal principal) {
         Usuario usuario = usuarioService.getByMesa(Long.parseLong(principal.getName()));
-
         List<Voto> votos = votoService.getByUsuario(usuario);
 
-        Map<String, Map<Participante, Long>> votosMap = votos.stream()
+        List<String> ordemCategorias = List.of(
+                "Peão", "Guri", "Piá", "Piazito", "Adulta", "Juvenil",
+                "Mirim", "Pré-Mirim", "Dente de Leite", "Chinoquinha"
+        );
+
+        Map<String, Map<Participante, Long>> votosAgrupados = votos.stream()
                 .collect(Collectors.groupingBy(
                         voto -> voto.getParticipante().getCategoria(),
                         Collectors.groupingBy(
@@ -68,8 +82,19 @@ public class UserAccessController {
                         )
                 ));
 
-        model.addAttribute("votosAgrupados", votosMap);
+        Map<String, Map<Participante, Long>> votosOrdenados = new LinkedHashMap<>();
 
+        for (String categoria : ordemCategorias) {
+            if (votosAgrupados.containsKey(categoria)) {
+                votosOrdenados.put(categoria, votosAgrupados.get(categoria));
+            }
+        }
+
+        votosAgrupados.keySet().stream()
+                .filter(categoria -> !ordemCategorias.contains(categoria))
+                .forEach(categoria -> votosOrdenados.put(categoria, votosAgrupados.get(categoria)));
+
+        model.addAttribute("votosAgrupados", votosOrdenados);
         return "meusVotos";
     }
 }

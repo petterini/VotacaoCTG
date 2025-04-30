@@ -3,6 +3,7 @@ package com.pedropetterini.votacaoctg.services;
 import com.pedropetterini.votacaoctg.entities.Usuario;
 import com.pedropetterini.votacaoctg.exceptions.UserNotFoundException;
 import com.pedropetterini.votacaoctg.repositories.UsuarioRepository;
+import com.pedropetterini.votacaoctg.repositories.VotoRepository;
 import com.pedropetterini.votacaoctg.validators.UsuarioValidator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
@@ -21,6 +22,7 @@ public class UsuarioService {
     private final UsuarioRepository usuarioRepository;
     private final UsuarioValidator usuarioValidator;
     private final PasswordEncoder passwordEncoder;
+    private final VotoRepository votoRepository;
 
 
     public Usuario addUsuario(Usuario usuario) {
@@ -47,6 +49,10 @@ public class UsuarioService {
         if(usuarioRepository.existsByMesa(usuario.getMesa())) {
             var newUser = usuarioRepository.findByMesa(usuario.getMesa());
             newUser.setCpf(usuario.getCpf());
+            newUser.setSenha(passwordEncoder.encode(usuario.getCpf()));
+            newUser.setRoles(usuario.getRoles());
+
+            usuarioValidator.validate(newUser);
 
             return usuarioRepository.save(newUser);
         }else{
@@ -69,5 +75,6 @@ public class UsuarioService {
         }else {
             throw new UserNotFoundException("Mesa não cadastrada.");
         }
+
     }
 }

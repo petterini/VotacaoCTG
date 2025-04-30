@@ -14,6 +14,9 @@
     <div class="col-12 col-sm-10 col-md-6 col-lg-4">
       <div class="login-card text-center p-4 bg-white rounded shadow">
         <h2 class="mb-4">Estância Pedro Broll Sobrinho</h2>
+        <div th:if="${param.error}" class="alert alert-danger" role="alert">
+          Número da mesa ou senha incorretos.
+        </div>
         <form method="POST" th:action="@{/login}">
           <div class="mb-3 text-start">
             <label for="username" class="form-label">Número da mesa</label>

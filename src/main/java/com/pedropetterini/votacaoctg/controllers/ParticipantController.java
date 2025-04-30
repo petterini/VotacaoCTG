@@ -41,7 +41,7 @@ public class ParticipantController {
         List<Participante> participantes = participanteService.getAllParticipants();
 
         List<String> ordemCategorias = List.of(
-                "Peão", "Guri", "Piá", "Piazito", "Adulta", "Juvenil", "Mirim", "Dente de Leite", "Chinoquinha"
+                "Peão", "Guri", "Piá", "Piazito", "Adulta", "Juvenil", "Mirim", "Pré-Mirim", "Dente de Leite", "Chinoquinha"
         );
 
         Map<String, List<Participante>> participantesMap = participantes.stream().collect(Collectors.groupingBy(Participante::getCategoria));
@@ -87,11 +87,12 @@ public class ParticipantController {
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping("excluirParticipante")
     public String excluirParticipante(@RequestParam UUID id, Model model) {
+        try {
+            participanteService.deleteParticipante(id);
+        }catch (Exception e) {
+            model.addAttribute("mensagem", "Erro ao excluir participante!");
+        }
 
-        List<Participante> participantes = participanteService.getAllParticipants();
-
-        model.addAttribute("participantes", participantes);
-
-        return "excluirParticipante";
+        return "redirect:/excluir-participante";
     }
 }

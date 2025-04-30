@@ -15,10 +15,19 @@
       <div class="home-card text-center p-4 bg-white rounded shadow">
         <h2 class="mb-5">Estância Pedro Broll Sobrinho</h2>
         <div class="d-flex flex-column align-items-center gap-3">
-          <a th:href="@{/votar}" class="btn btn-success btn-lg w-100">Votar</a>
-          <a th:href="@{/acompanhar}" class="btn btn-primary btn-lg w-100">Acompanhar seus votos</a>
-          <a th:href="@{/listar-participantes}" class="btn btn-warning btn-lg w-100">Listar participantes</a>
-          <a th:href="@{/logout}" class="btn btn-outline-danger btn-lg w-100 mt-3">Sair</a>
+
+          <!-- Botão de Votação (habilitado ou desabilitado dependendo do estado do atributo 'jaVotou') -->
+          <a th:if="${!jaVotou}" th:href="@{/votar}" class="btn btn-outline-primary btn-lg w-100">Votar</a>
+          <button th:if="${jaVotou}" class="btn btn-outline-secondary btn-lg w-100" disabled>Votar</button>
+
+          <!-- Mensagem para quem já votou -->
+          <div th:if="${jaVotou}" class="alert alert-info w-100 text-center mt-2">
+            Você já atingiu o limite de votos. Obrigado por participar!
+          </div>
+
+          <a th:href="@{/acompanhar}" class="btn btn-outline-primary btn-lg w-100">Acompanhar seus votos</a>
+          <a th:href="@{/listar-participantes}" class="btn btn-outline-primary btn-lg w-100">Listar participantes</a>
+          <a th:href="@{/logout}" class="btn btn-danger btn-lg w-100 mt-3">Sair</a>
         </div>
       </div>
     </div>

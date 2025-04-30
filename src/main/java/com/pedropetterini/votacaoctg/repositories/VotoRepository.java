@@ -10,4 +10,7 @@ import java.util.UUID;
 public interface VotoRepository extends JpaRepository<Voto, UUID> {
 
     List<Voto> findByUsuario(Usuario usuario);
+
+    boolean getVotosById(UUID id);
+
 }

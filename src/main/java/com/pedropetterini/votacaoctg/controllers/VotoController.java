@@ -8,7 +8,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.UUID;
 
@@ -23,19 +25,25 @@ public class VotoController {
         try {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String mesa = authentication.getName();
+            Long mesaFormated = Long.parseLong(mesa);
 
             votos.forEach((categoria, participanteId) -> {
-                System.out.println("Quem votou: " + mesa + " Participante: " + participanteId);
-
-                Long mesaFormated = Long.parseLong(mesa);
                 UUID participanteIdFormated = UUID.fromString(participanteId);
-
                 votoService.votar(mesaFormated, participanteIdFormated);
             });
+
+            int totalVotos = votoService.contaVotos(mesaFormated);
+            System.out.println("Total de votos atual: " + totalVotos);
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        return "redirect:/user-dashboard";
+    }
 
-        return "redirect:/votar";
+    @PostMapping("/excluir-todos-votos")
+    public String excluirTodosVotos(RedirectAttributes redirectAttributes){
+        votoService.excluirTodos();
+        return "redirect:/verificar-votos";
     }
 }

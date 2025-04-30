@@ -13,8 +13,17 @@ public class UsuarioValidator {
     private final UsuarioRepository usuarioRepository;
 
     public void validate(Usuario usuario) {
-        if(usuarioRepository.existsByMesa(usuario.getMesa())) {
-            throw new DuplicateUserException("Usuário já cadastrado.");
+        if(usuario.getId() == null){
+            if(usuarioRepository.existsByMesa(usuario.getMesa())){
+                throw new DuplicateUserException("Mesa já cadastrada!");
+            }
+        }else{
+            if(usuarioRepository.existsByMesa(usuario.getMesa())){
+                var newUser = usuarioRepository.findByMesa(usuario.getMesa());
+                if(!usuario.getId().equals(newUser.getId())){
+                    throw new DuplicateUserException("Mesa já cadastrada!");
+                }
+            }
         }
 
         if (usuario.getCpf() == null || usuario.getCpf().length() != 11 || !isValidCPF(usuario.getCpf())) {
