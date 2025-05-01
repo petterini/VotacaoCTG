@@ -2,6 +2,8 @@ package com.pedropetterini.votacaoctg.controllers;
 
 import com.pedropetterini.votacaoctg.entities.Participante;
 import com.pedropetterini.votacaoctg.entities.Usuario;
+import com.pedropetterini.votacaoctg.exceptions.DuplicateParticipantException;
+import com.pedropetterini.votacaoctg.exceptions.ParticipantNotFoundException;
 import com.pedropetterini.votacaoctg.services.ParticipanteService;
 import com.pedropetterini.votacaoctg.services.UsuarioService;
 import lombok.RequiredArgsConstructor;
@@ -30,9 +32,10 @@ public class ParticipantController {
         try {
             participanteService.addParticipante(participante);
             model.addAttribute("mensagem", "Participante cadastrado com sucesso!");
-        } catch (Exception e) {
-            model.addAttribute("mensagem", "Esse participante já foi cadastrado!");
+        } catch (DuplicateParticipantException ex) {
+            model.addAttribute("mensagem", ex.getMessage());
         }
+
         return "cadastrarParticipante";
     }
 
@@ -73,9 +76,8 @@ public class ParticipantController {
         try {
             participanteService.updateParticipante(id, participante);
             model.addAttribute("mensagem", "Participante editado com sucesso!");
-        } catch (Exception e) {
-            e.printStackTrace();
-            model.addAttribute("mensagem", "Erro ao editar participante!");
+        } catch (ParticipantNotFoundException | DuplicateParticipantException e) {
+            model.addAttribute("mensagem", e.getMessage());
         }
 
         List<Participante> participantes = participanteService.getAllParticipants();
@@ -89,8 +91,8 @@ public class ParticipantController {
     public String excluirParticipante(@RequestParam UUID id, Model model) {
         try {
             participanteService.deleteParticipante(id);
-        }catch (Exception e) {
-            model.addAttribute("mensagem", "Erro ao excluir participante!");
+        } catch (ParticipantNotFoundException e) {
+            model.addAttribute("mensagem", e.getMessage());
         }
 
         return "redirect:/excluir-participante";

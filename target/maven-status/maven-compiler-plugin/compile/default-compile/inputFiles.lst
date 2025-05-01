@@ -3,13 +3,10 @@
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/config/SecurityConfiguration.java
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/config/WebConfiguration.java
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/controllers/AdminAccessController.java
-/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/controllers/InicialController.java
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/controllers/LoginViewController.java
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/controllers/ParticipantController.java
-/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/controllers/ParticipanteController.java
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/controllers/UserAccessController.java
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/controllers/UserController.java
-/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/controllers/UsuarioController.java
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/controllers/VotoController.java
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/entities/Participante.java
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/entities/RegistrarVotos.java

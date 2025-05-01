@@ -2,6 +2,7 @@ package com.pedropetterini.votacaoctg.validators;
 
 import com.pedropetterini.votacaoctg.entities.Usuario;
 import com.pedropetterini.votacaoctg.exceptions.DuplicateUserException;
+import com.pedropetterini.votacaoctg.exceptions.InvalidCpfException;
 import com.pedropetterini.votacaoctg.repositories.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -27,7 +28,7 @@ public class UsuarioValidator {
         }
 
         if (usuario.getCpf() == null || usuario.getCpf().length() != 11 || !isValidCPF(usuario.getCpf())) {
-            throw new IllegalArgumentException("CPF inválido.");
+            throw new InvalidCpfException("CPF inválido.");
         }
     }
 
