@@ -1,6 +1,6 @@
 package com.pedropetterini.votacaoctg.controllers;
 
-import com.pedropetterini.votacaoctg.entities.Voto;
+import com.pedropetterini.votacaoctg.exceptions.VotesExceededException;
 import com.pedropetterini.votacaoctg.services.VotoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.UUID;
 
@@ -32,10 +31,7 @@ public class VotoController {
                 votoService.votar(mesaFormated, participanteIdFormated);
             });
 
-            int totalVotos = votoService.contaVotos(mesaFormated);
-            System.out.println("Total de votos atual: " + totalVotos);
-
-        } catch (Exception ex) {
+        } catch (VotesExceededException ex) {
             ex.printStackTrace();
         }
         return "redirect:/user-dashboard";
@@ -46,4 +42,11 @@ public class VotoController {
         votoService.excluirTodos();
         return "redirect:/verificar-votos";
     }
+
+    @PostMapping("/alternar-votacao")
+    public String alternarVotacao() {
+        votoService.alternarVotacao();
+        return "redirect:/verificar-votos";
+    }
+
 }

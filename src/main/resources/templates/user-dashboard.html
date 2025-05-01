@@ -16,13 +16,16 @@
         <h2 class="mb-5">Estância Pedro Broll Sobrinho</h2>
         <div class="d-flex flex-column align-items-center gap-3">
 
-          <!-- Botão de Votação (habilitado ou desabilitado dependendo do estado do atributo 'jaVotou') -->
-          <a th:if="${!jaVotou}" th:href="@{/votar}" class="btn btn-outline-primary btn-lg w-100">Votar</a>
-          <button th:if="${jaVotou}" class="btn btn-outline-secondary btn-lg w-100" disabled>Votar</button>
+          <a th:if="${votacaoLiberada} and !${jaVotou}" th:href="@{/votar}" class="btn btn-outline-primary btn-lg w-100">Votar</a>
 
-          <!-- Mensagem para quem já votou -->
-          <div th:if="${jaVotou}" class="alert alert-info w-100 text-center mt-2">
+          <button th:if="${votacaoLiberada} and ${jaVotou}" class="btn btn-outline-secondary btn-lg w-100" disabled>Votar</button>
+          <div th:if="${votacaoLiberada} and ${jaVotou}" class="alert alert-info w-100 text-center mt-2">
             Você já atingiu o limite de votos. Obrigado por participar!
+          </div>
+
+          <button th:if="${!votacaoLiberada}" class="btn btn-outline-secondary btn-lg w-100" disabled>Votar</button>
+          <div th:if="${!votacaoLiberada}" class="alert alert-warning w-100 text-center mt-2">
+            A votação não está liberada no momento.
           </div>
 
           <a th:href="@{/acompanhar}" class="btn btn-outline-primary btn-lg w-100">Acompanhar seus votos</a>

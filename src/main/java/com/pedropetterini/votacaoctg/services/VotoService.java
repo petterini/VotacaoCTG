@@ -1,19 +1,12 @@
 package com.pedropetterini.votacaoctg.services;
 
-import com.pedropetterini.votacaoctg.entities.Participante;
-import com.pedropetterini.votacaoctg.entities.RegistrarVotos;
-import com.pedropetterini.votacaoctg.entities.Usuario;
-import com.pedropetterini.votacaoctg.entities.Voto;
+import com.pedropetterini.votacaoctg.entities.*;
 import com.pedropetterini.votacaoctg.exceptions.VotesExceededException;
-import com.pedropetterini.votacaoctg.repositories.ParticipanteRepository;
-import com.pedropetterini.votacaoctg.repositories.RegistroRepository;
-import com.pedropetterini.votacaoctg.repositories.UsuarioRepository;
-import com.pedropetterini.votacaoctg.repositories.VotoRepository;
+import com.pedropetterini.votacaoctg.repositories.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.naming.LimitExceededException;
 import java.util.List;
 import java.util.UUID;
 
@@ -24,6 +17,7 @@ public class VotoService {
     private final UsuarioRepository usuarioRepository;
     private final ParticipanteRepository participanteRepository;
     private final RegistroRepository registroRepository;
+    private final ConfigRepository configRepository;
 
     public Voto votar(Long mesa, UUID participante) {
 
@@ -80,5 +74,23 @@ public class VotoService {
 
         registroRepository.save(votos);
         return votos.getVotos();
+    }
+
+    public Boolean isVotacaoLiberada(){
+        if(configRepository.existsById(1L)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void alternarVotacao() {
+        if(configRepository.existsById(1L)) {
+            configRepository.deleteById(1L);
+            configRepository.save(new Config(0L));
+        }else{
+            configRepository.deleteById(0L);
+            configRepository.save(new Config(1L));
+        }
     }
 }

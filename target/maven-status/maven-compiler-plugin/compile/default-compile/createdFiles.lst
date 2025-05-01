@@ -8,6 +8,7 @@ com/pedropetterini/votacaoctg/controllers/AdminAccessController.class
 com/pedropetterini/votacaoctg/exceptions/InvalidCpfException.class
 com/pedropetterini/votacaoctg/controllers/UserController.class
 com/pedropetterini/votacaoctg/services/ParticipanteService.class
+com/pedropetterini/votacaoctg/repositories/ConfigRepository.class
 com/pedropetterini/votacaoctg/exceptions/GlobalExceptionHandler.class
 com/pedropetterini/votacaoctg/repositories/RegistroRepository.class
 com/pedropetterini/votacaoctg/config/SecurityConfiguration.class
@@ -18,6 +19,7 @@ com/pedropetterini/votacaoctg/controllers/VotoController.class
 com/pedropetterini/votacaoctg/exceptions/UserNotFoundException.class
 com/pedropetterini/votacaoctg/services/UsuarioService.class
 com/pedropetterini/votacaoctg/entities/RegistrarVotos.class
+com/pedropetterini/votacaoctg/entities/Config.class
 com/pedropetterini/votacaoctg/exceptions/VotesExceededException.class
 com/pedropetterini/votacaoctg/services/CustomUserDetailsService.class
 com/pedropetterini/votacaoctg/entities/Voto.class

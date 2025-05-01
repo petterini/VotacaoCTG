@@ -8,6 +8,7 @@
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/controllers/UserAccessController.java
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/controllers/UserController.java
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/controllers/VotoController.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/entities/Config.java
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/entities/Participante.java
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/entities/RegistrarVotos.java
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/entities/Usuario.java
@@ -22,6 +23,7 @@
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/exceptions/ParticipantNotFoundException.java
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/exceptions/UserNotFoundException.java
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/exceptions/VotesExceededException.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/repositories/ConfigRepository.java
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/repositories/ParticipanteRepository.java
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/repositories/RegistroRepository.java
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/repositories/UsuarioRepository.java

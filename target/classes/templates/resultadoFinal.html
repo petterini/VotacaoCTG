@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Resultado Final</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="icon" href="data:,">
 </head>
 <body class="bg-light p-5 d-flex justify-content-center">
 <div class="container" style="max-width: 700px;">
@@ -19,8 +20,8 @@
             th:each="voteCount : ${entry.value}">
           <span th:text="${voteCount.key.nome}">Nome Participante</span>
           <span>
-              <span th:text="${voteCount.value}">0</span> voto(s)
-            </span>
+            <span th:text="${voteCount.value}">0</span> voto(s)
+          </span>
         </li>
       </ul>
     </div>
@@ -28,6 +29,13 @@
 
   <div class="text-center">
     <a th:href="@{/admin-dashboard}" class="btn btn-outline-secondary">Voltar</a><br><br>
+
+    <form th:action="@{/alternar-votacao}" method="post" class="mb-3">
+      <button type="submit" class="btn"
+              th:classappend="${votacaoLiberada} ? 'btn-warning' : 'btn-success'">
+        <span th:text="${votacaoLiberada} ? 'Bloquear Votação' : 'Liberar Votação'">Botão</span>
+      </button>
+    </form>
 
     <form th:action="@{/excluir-todos-votos}" method="post"
           onsubmit="return confirm('Tem certeza que deseja excluir TODOS os votos? Esta ação não poderá ser desfeita.');">

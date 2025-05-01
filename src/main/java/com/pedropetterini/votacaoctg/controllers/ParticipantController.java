@@ -44,7 +44,7 @@ public class ParticipantController {
         List<Participante> participantes = participanteService.getAllParticipants();
 
         List<String> ordemCategorias = List.of(
-                "Peão", "Guri", "Piá", "Piazito", "Adulta", "Juvenil", "Mirim", "Pré-Mirim", "Dente de Leite", "Chinoquinha"
+                "Chinoquinha", "Dente de Leite", "Pré-Mirim", "Mirim", "Juvenil", "Adulta", "Piazito", "Piá", "Guri", "Peão"
         );
 
         Map<String, List<Participante>> participantesMap = participantes.stream().collect(Collectors.groupingBy(Participante::getCategoria));
