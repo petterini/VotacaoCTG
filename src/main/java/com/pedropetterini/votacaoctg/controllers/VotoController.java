@@ -31,8 +31,11 @@ public class VotoController {
                 votoService.votar(mesaFormated, participanteIdFormated);
             });
 
+            votoService.contaVotos(mesaFormated);
+
+
         } catch (VotesExceededException ex) {
-            ex.printStackTrace();
+            System.out.println(ex.getMessage());
         }
         return "redirect:/user-dashboard";
     }
