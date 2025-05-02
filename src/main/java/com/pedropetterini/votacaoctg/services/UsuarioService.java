@@ -2,6 +2,7 @@ package com.pedropetterini.votacaoctg.services;
 
 import com.pedropetterini.votacaoctg.entities.Usuario;
 import com.pedropetterini.votacaoctg.exceptions.UserNotFoundException;
+import com.pedropetterini.votacaoctg.exceptions.UserVoteExistsException;
 import com.pedropetterini.votacaoctg.repositories.UsuarioRepository;
 import com.pedropetterini.votacaoctg.repositories.VotoRepository;
 import com.pedropetterini.votacaoctg.validators.UsuarioValidator;
@@ -71,6 +72,10 @@ public class UsuarioService {
     @Transactional
     public void deleteUsuario(Long numMesa) {
         if(usuarioRepository.existsByMesa(numMesa)) {
+            var newUser = usuarioRepository.findByMesa(numMesa);
+            if(votoRepository.findByUsuario(newUser) != null) {
+                throw new UserVoteExistsException("Não pode excluir mesas que já votaram!");
+            }
             usuarioRepository.deleteByMesa(numMesa);
         }else {
             throw new UserNotFoundException("Mesa não cadastrada.");

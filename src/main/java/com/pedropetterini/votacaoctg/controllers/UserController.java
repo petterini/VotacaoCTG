@@ -4,6 +4,7 @@ import com.pedropetterini.votacaoctg.entities.Usuario;
 import com.pedropetterini.votacaoctg.exceptions.DuplicateUserException;
 import com.pedropetterini.votacaoctg.exceptions.InvalidCpfException;
 import com.pedropetterini.votacaoctg.exceptions.UserNotFoundException;
+import com.pedropetterini.votacaoctg.exceptions.UserVoteExistsException;
 import com.pedropetterini.votacaoctg.services.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -50,7 +51,7 @@ public class UserController {
         try {
             usuarioService.deleteUsuario(numMesa);
             model.addAttribute("mensagem", "Usuario excluido com sucesso!");
-        } catch (UserNotFoundException e) {
+        } catch (UserNotFoundException | UserVoteExistsException e) {
             model.addAttribute("mensagem", e.getMessage());
         }
         return "excluirUsuario";

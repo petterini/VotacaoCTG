@@ -10,6 +10,7 @@ com/pedropetterini/votacaoctg/controllers/UserController.class
 com/pedropetterini/votacaoctg/services/ParticipanteService.class
 com/pedropetterini/votacaoctg/repositories/ConfigRepository.class
 com/pedropetterini/votacaoctg/exceptions/GlobalExceptionHandler.class
+com/pedropetterini/votacaoctg/exceptions/UserVoteExistsException.class
 com/pedropetterini/votacaoctg/repositories/RegistroRepository.class
 com/pedropetterini/votacaoctg/config/SecurityConfiguration.class
 com/pedropetterini/votacaoctg/repositories/ParticipanteRepository.class

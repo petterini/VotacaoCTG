@@ -22,6 +22,7 @@
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/exceptions/InvalidCpfException.java
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/exceptions/ParticipantNotFoundException.java
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/exceptions/UserNotFoundException.java
+/home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/exceptions/UserVoteExistsException.java
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/exceptions/VotesExceededException.java
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/repositories/ConfigRepository.java
 /home/pedro/Área de trabalho/VotacaoCTG/src/main/java/com/pedropetterini/votacaoctg/repositories/ParticipanteRepository.java
