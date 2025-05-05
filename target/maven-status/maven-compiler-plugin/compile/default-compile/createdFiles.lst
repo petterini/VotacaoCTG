@@ -13,6 +13,7 @@ com/pedropetterini/votacaoctg/exceptions/GlobalExceptionHandler.class
 com/pedropetterini/votacaoctg/exceptions/UserVoteExistsException.class
 com/pedropetterini/votacaoctg/repositories/RegistroRepository.class
 com/pedropetterini/votacaoctg/config/SecurityConfiguration.class
+com/pedropetterini/votacaoctg/exceptions/VotesBlockedException.class
 com/pedropetterini/votacaoctg/repositories/ParticipanteRepository.class
 com/pedropetterini/votacaoctg/config/CustomAuthenticationSuccessHandler.class
 com/pedropetterini/votacaoctg/enums/Categoria.class

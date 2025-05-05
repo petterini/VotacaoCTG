@@ -1,5 +1,6 @@
 package com.pedropetterini.votacaoctg.controllers;
 
+import com.pedropetterini.votacaoctg.exceptions.VotesBlockedException;
 import com.pedropetterini.votacaoctg.exceptions.VotesExceededException;
 import com.pedropetterini.votacaoctg.services.VotoService;
 import lombok.RequiredArgsConstructor;
@@ -34,7 +35,7 @@ public class VotoController {
             votoService.contaVotos(mesaFormated);
 
 
-        } catch (VotesExceededException ex) {
+        } catch (VotesExceededException | VotesBlockedException ex) {
             System.out.println(ex.getMessage());
         }
         return "redirect:/user-dashboard";

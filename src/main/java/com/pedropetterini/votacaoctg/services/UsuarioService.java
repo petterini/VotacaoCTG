@@ -73,7 +73,7 @@ public class UsuarioService {
     public void deleteUsuario(Long numMesa) {
         if(usuarioRepository.existsByMesa(numMesa)) {
             var newUser = usuarioRepository.findByMesa(numMesa);
-            if(votoRepository.findByUsuario(newUser) != null) {
+            if(!votoRepository.findByUsuario(newUser).isEmpty()) {
                 throw new UserVoteExistsException("Não pode excluir mesas que já votaram!");
             }
             usuarioRepository.deleteByMesa(numMesa);

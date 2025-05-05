@@ -1,6 +1,7 @@
 package com.pedropetterini.votacaoctg.services;
 
 import com.pedropetterini.votacaoctg.entities.*;
+import com.pedropetterini.votacaoctg.exceptions.VotesBlockedException;
 import com.pedropetterini.votacaoctg.exceptions.VotesExceededException;
 import com.pedropetterini.votacaoctg.repositories.*;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,9 @@ public class VotoService {
     public Voto votar(Long mesa, UUID participante) {
 
         if (podeVotar(mesa)) {
+            if (!isVotacaoLiberada()){
+                throw new VotesBlockedException("A votação está bloqueada!");
+            }
             Participante p1 = participanteRepository.findById(participante).orElse(null);
             Usuario u1 = usuarioRepository.findByMesa(mesa);
 
